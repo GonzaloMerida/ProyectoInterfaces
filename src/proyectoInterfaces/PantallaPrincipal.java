@@ -5,6 +5,10 @@
 package proyectoInterfaces;
 
 import java.awt.Frame;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -76,8 +80,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabelGuia.setForeground(new java.awt.Color(56, 185, 255));
         jLabelGuia.setText("Selecciona álbum :");
         jPanel1.add(jLabelGuia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 190, 30));
-
-        jLabelCaratula.setText("imagen");
         jPanel1.add(jLabelCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 370, 390));
 
         jComboBoxDiscos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Images and Words", "Awake", "Falling Into Infinity", "Scenes From A Memory", "Six Degrees Of Inner Turbulence", "Train Of Thought", "Octavarium", "Systematic Chaos", "Black Clouds & Silver Linnings", "A Dramatic Turn Of Events", "Dream Theater", "The Astonishing", "Distance Over Time", "A View From The Top Of The World" }));
@@ -147,10 +149,24 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMinimizarActionPerformed
 
     private void jComboBoxDiscosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiscosActionPerformed
-//        if (jComboBoxDiscos.){
-//            
-//        }
+        setJLabelCaratula();
     }//GEN-LAST:event_jComboBoxDiscosActionPerformed
+
+    public void setJLabelCaratula() {
+        if (jComboBoxDiscos.getItemAt(0).equalsIgnoreCase("Images and Words")) {
+            setImageLabel(jLabelCaratula, "src\\images\\images_and_words.jpg");
+        } else if (jComboBoxDiscos.getItemAt(0).equalsIgnoreCase("Awake")) {
+            setImageLabel(jLabelCaratula, "src\\images\\awake.jpg");
+        } else if (jComboBoxDiscos.getItemAt(0).equalsIgnoreCase("Awake")) {
+            setImageLabel(jLabelCaratula, "src\\images\\awake.jpg");
+        }
+    }
+
+    private void setImageLabel(JLabel nombreLabel, String ruta) {
+        ImageIcon imagen = new ImageIcon(ruta);
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(nombreLabel.getWidth(), nombreLabel.getHeight(), Image.SCALE_DEFAULT));
+        nombreLabel.setIcon(icono);
+    }
 
     /**
      * @param args the command line arguments

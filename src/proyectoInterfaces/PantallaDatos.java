@@ -4,6 +4,7 @@
  */
 package proyectoInterfaces;
 
+
 /**
  *
  * @author Gonzalo
@@ -30,52 +31,75 @@ public class PantallaDatos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelBotones = new javax.swing.JPanel();
         jButtonVolver = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelInfo = new javax.swing.JPanel();
+        jLabelImagenAlbum = new javax.swing.JLabel();
+        jLabelInfoAlbum = new javax.swing.JLabel();
+        jButtonCerrar = new javax.swing.JButton();
+        jButtonNoche = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
+        jPanelBotones.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBotones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
 
+        jButtonVolver.setBackground(new java.awt.Color(173, 225, 255));
+        jButtonVolver.setForeground(new java.awt.Color(56, 185, 255));
         jButtonVolver.setText("Volver");
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonVolver);
+        jPanelBotones.add(jButtonVolver);
 
+        jButtonSalir.setBackground(new java.awt.Color(173, 225, 255));
+        jButtonSalir.setForeground(new java.awt.Color(56, 185, 255));
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonSalir);
+        jPanelBotones.add(jButtonSalir);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelInfo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelInfo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelInfo.add(jLabelImagenAlbum, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 300, 350));
+        jPanelInfo.add(jLabelInfoAlbum, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 300, 350));
+
+        jButtonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton_cerrar.png"))); // NOI18N
+        jButtonCerrar.setBorderPainted(false);
+        jButtonCerrar.setContentAreaFilled(false);
+        jButtonCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton_cerrar_pulsado.png"))); // NOI18N
+        jButtonCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton_cerrar_rollover.png"))); // NOI18N
+        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarActionPerformed(evt);
+            }
+        });
+        jPanelInfo.add(jButtonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 20, 30));
+
+        jButtonNoche.setText("ModoNoche");
+        jPanelInfo.add(jButtonNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 6, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+            .addComponent(jPanelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -89,6 +113,10 @@ public class PantallaDatos extends javax.swing.JDialog {
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,9 +161,13 @@ public class PantallaDatos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JButton jButtonNoche;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabelImagenAlbum;
+    private javax.swing.JLabel jLabelInfoAlbum;
+    private javax.swing.JPanel jPanelBotones;
+    private javax.swing.JPanel jPanelInfo;
     // End of variables declaration//GEN-END:variables
 }
