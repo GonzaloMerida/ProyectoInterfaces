@@ -4,6 +4,7 @@
  */
 package proyectoInterfaces;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -16,11 +17,35 @@ import javax.swing.JLabel;
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
+    private String textoInfo = "";
+    private boolean integrantesSeleccionados = false;
+    private boolean fechaLanzamientoSeleccionada = false;
+    private boolean reviewSeleccionada = false;
+
     /**
      * Creates new form PantallaPrincipal
      */
     public PantallaPrincipal() {
         initComponents();
+        setLocationRelativeTo(null);
+
+        jRadioButtonIntegrantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                integrantesSeleccionados = jRadioButtonIntegrantes.isSelected();
+            }
+        });
+
+        jRadioButtonFechaLanzamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaLanzamientoSeleccionada = jRadioButtonFechaLanzamiento.isSelected();
+            }
+        });
+
+        jRadioButtonReview.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reviewSeleccionada = jRadioButtonReview.isSelected();
+            }
+        });
     }
 
     /**
@@ -32,25 +57,36 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelContenido = new javax.swing.JPanel();
         jButtonNoche = new javax.swing.JButton();
         jButtonCerrar = new javax.swing.JButton();
         jButtonMinimizar = new javax.swing.JButton();
-        jLabelGuia = new javax.swing.JLabel();
+        jLabelOpciones = new javax.swing.JLabel();
         jLabelCaratula = new javax.swing.JLabel();
         jComboBoxDiscos = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
+        jRadioButtonIntegrantes = new javax.swing.JRadioButton();
+        jRadioButtonFechaLanzamiento = new javax.swing.JRadioButton();
+        jRadioButtonReview = new javax.swing.JRadioButton();
+        jLabelGuia1 = new javax.swing.JLabel();
+        jPanelBotones = new javax.swing.JPanel();
         jButtonVerMas = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelContenido.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelContenido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonNoche.setText("ModoNoche");
-        jPanel1.add(jButtonNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 6, -1, -1));
+        jButtonNoche.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton_cambia_modo.png"))); // NOI18N
+        jButtonNoche.setBorderPainted(false);
+        jButtonNoche.setContentAreaFilled(false);
+        jButtonNoche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNocheActionPerformed(evt);
+            }
+        });
+        jPanelContenido.add(jButtonNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 6, -1, -1));
 
         jButtonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton_cerrar.png"))); // NOI18N
         jButtonCerrar.setBorderPainted(false);
@@ -63,7 +99,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jButtonCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 20, 30));
+        jPanelContenido.add(jButtonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 20, 30));
 
         jButtonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boton_minimizar.png"))); // NOI18N
         jButtonMinimizar.setBorderPainted(false);
@@ -75,25 +111,54 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jButtonMinimizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 20, 30));
+        jPanelContenido.add(jButtonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 20, 30));
 
-        jLabelGuia.setForeground(new java.awt.Color(56, 185, 255));
-        jLabelGuia.setText("Selecciona álbum :");
-        jPanel1.add(jLabelGuia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 190, 30));
-        jPanel1.add(jLabelCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 370, 390));
+        jLabelOpciones.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jLabelOpciones.setForeground(new java.awt.Color(56, 185, 255));
+        jLabelOpciones.setText("Selecciona las opciones que quieras ver :");
+        jPanelContenido.add(jLabelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 300, 30));
+        jPanelContenido.add(jLabelCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 370, 390));
 
+        jComboBoxDiscos.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        jComboBoxDiscos.setForeground(new java.awt.Color(56, 185, 255));
         jComboBoxDiscos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Images and Words", "Awake", "Falling Into Infinity", "Scenes From A Memory", "Six Degrees Of Inner Turbulence", "Train Of Thought", "Octavarium", "Systematic Chaos", "Black Clouds & Silver Linnings", "A Dramatic Turn Of Events", "Dream Theater", "The Astonishing", "Distance Over Time", "A View From The Top Of The World" }));
         jComboBoxDiscos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxDiscosActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxDiscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 210, 30));
+        jPanelContenido.add(jComboBoxDiscos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 210, 30));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
+        jRadioButtonIntegrantes.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jRadioButtonIntegrantes.setForeground(new java.awt.Color(56, 185, 255));
+        jRadioButtonIntegrantes.setText("Ver integrantes del grupo");
+        jPanelContenido.add(jRadioButtonIntegrantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 290, -1));
+
+        jRadioButtonFechaLanzamiento.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jRadioButtonFechaLanzamiento.setForeground(new java.awt.Color(56, 185, 255));
+        jRadioButtonFechaLanzamiento.setText("Ver año de lanzamiento");
+        jRadioButtonFechaLanzamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonFechaLanzamientoActionPerformed(evt);
+            }
+        });
+        jPanelContenido.add(jRadioButtonFechaLanzamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 290, -1));
+
+        jRadioButtonReview.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jRadioButtonReview.setForeground(new java.awt.Color(56, 185, 255));
+        jRadioButtonReview.setText("Ver pequeña review");
+        jPanelContenido.add(jRadioButtonReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 240, -1));
+
+        jLabelGuia1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabelGuia1.setForeground(new java.awt.Color(56, 185, 255));
+        jLabelGuia1.setText("Selecciona álbum :");
+        jPanelContenido.add(jLabelGuia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 190, 30));
+
+        jPanelBotones.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBotones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
 
         jButtonVerMas.setBackground(new java.awt.Color(173, 225, 255));
+        jButtonVerMas.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jButtonVerMas.setForeground(new java.awt.Color(56, 185, 255));
         jButtonVerMas.setText("Ver más");
         jButtonVerMas.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +166,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jButtonVerMasActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonVerMas);
+        jPanelBotones.add(jButtonVerMas);
 
         jButtonSalir.setBackground(new java.awt.Color(173, 225, 255));
+        jButtonSalir.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jButtonSalir.setForeground(new java.awt.Color(56, 185, 255));
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -111,29 +177,28 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonSalir);
+        jPanelBotones.add(jButtonSalir);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
+            .addComponent(jPanelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                .addComponent(jPanelContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonVerMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerMasActionPerformed
-        PantallaDatos pantallaDatos = new PantallaDatos(this, true);
-        pantallaDatos.setVisible(true);
+        abrirPantallaDatos();
     }//GEN-LAST:event_jButtonVerMasActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
@@ -152,20 +217,250 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setJLabelCaratula();
     }//GEN-LAST:event_jComboBoxDiscosActionPerformed
 
-    public void setJLabelCaratula() {
-        if (jComboBoxDiscos.getItemAt(0).equalsIgnoreCase("Images and Words")) {
-            setImageLabel(jLabelCaratula, "src\\images\\images_and_words.jpg");
-        } else if (jComboBoxDiscos.getItemAt(0).equalsIgnoreCase("Awake")) {
-            setImageLabel(jLabelCaratula, "src\\images\\awake.jpg");
-        } else if (jComboBoxDiscos.getItemAt(0).equalsIgnoreCase("Awake")) {
-            setImageLabel(jLabelCaratula, "src\\images\\awake.jpg");
+    private void jRadioButtonFechaLanzamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFechaLanzamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonFechaLanzamientoActionPerformed
+
+    boolean modoOscuro = false;
+    private void jButtonNocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNocheActionPerformed
+        if (!modoOscuro) {
+
+            jPanelContenido.setBackground(Color.decode("#17181a"));
+            jPanelBotones.setBackground(Color.decode("#17181a"));
+            jLabelGuia1.setForeground(Color.decode("#ade1ff"));
+            jLabelOpciones.setForeground(Color.decode("#ade1ff"));
+            jRadioButtonFechaLanzamiento.setForeground(Color.decode("#ade1ff"));
+            jRadioButtonIntegrantes.setForeground(Color.decode("#ade1ff"));
+            jRadioButtonReview.setForeground(Color.decode("#ade1ff"));
+            jButtonVerMas.setBackground(Color.decode("#005db2"));
+            jButtonSalir.setBackground(Color.decode("#005db2"));
+            jButtonVerMas.setForeground(Color.decode("#ade1ff"));
+            jButtonSalir.setForeground(Color.decode("#ade1ff"));
+            jButtonNoche.setIcon(new ImageIcon(getClass().getResource("/images/boton_modo_noche_activado.png")));
+
+            modoOscuro = true;
+
+        } else {
+            PantallaPrincipal frame = new PantallaPrincipal();
+
+            this.dispose();
+            frame.setVisible(true);
         }
+
+    }//GEN-LAST:event_jButtonNocheActionPerformed
+
+    public void abrirPantallaDatos() {
+        PantallaDatos pantallaDatos = new PantallaDatos(this, true);
+
+        if (integrantesSeleccionados) {
+            if (jComboBoxDiscos.getSelectedItem().equals("Images and Words")
+                    || jComboBoxDiscos.getSelectedItem().equals("Awake")
+                    || jComboBoxDiscos.getSelectedItem().equals("Falling Into Infinity")
+                    || jComboBoxDiscos.getSelectedItem().equals("Scenes From A Memory")
+                    || jComboBoxDiscos.getSelectedItem().equals("Six Degrees Of Inner Turubulence")
+                    || jComboBoxDiscos.getSelectedItem().equals("Train Of Thought")
+                    || jComboBoxDiscos.getSelectedItem().equals("Octavarium")
+                    || jComboBoxDiscos.getSelectedItem().equals("Systematic Chaos")
+                    || jComboBoxDiscos.getSelectedItem().equals("Black Clouds & Silver Linnings")) {
+                pantallaDatos.actualizarInfoIntegrantes("James Labrie, John Petrucci, John Myung, Mike Portnoy, Jordan Ruddes");
+            } else {
+                pantallaDatos.actualizarInfoIntegrantes("James Labrie, John Petrucci, John Myung, Mike Mangini, Jordan Ruddes");
+            }
+        }
+
+        String selectedItem = (String) jComboBoxDiscos.getSelectedItem();
+
+        switch (selectedItem) {
+            case "Images and Words":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("1991");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Primer álbum de la banda, reconocido por traer una música nueva"
+                            + " y fresca al género del rock progresivo");
+                }
+                break;
+            case "Awake":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("1994");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Segundo álbum de la banda con un tono más heavy y oscuro que el anterior, con un James Labrie "
+                            + "increíble.");
+                }
+                break;
+            case "Falling Into Infinity":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("1997");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Disco de corte muy rockero y no tan progresivo, con canciones muy variopintas y diferentes entre sí");
+                }
+                break;
+            case "Scenes From A Memory":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("1999");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Disco conceptual considerado si no el mejor, uno de los mejores de toda la historia del grupo. De corte muy"
+                            + "progresivo.");
+                }
+                break;
+            case "Six Degrees Of Inner Turbulence":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2001");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Disco dividido en 2 por su extensión y muy diferenciados entre sí, siendo el primero más progresivo y experimental"
+                            + "y el segundo más melódico");
+                }
+                break;
+            case "Train Of Thought":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2003");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Podría ser el álbum con el estilo más heavy y oscuro del grupo, con riffs inolvidables y un tempo muy rápido");
+                }
+                break;
+            case "Octavarium":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2005");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Octavo disco del grupo, con un tono más alegre y melódico. Su última canción "
+                            + "es una de las más reconocidas en cuanto a calidad de la banda");
+                }
+                break;
+            case "Systematic Chaos":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2007");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Álbum con temática lírica oscura, incluyendo figuras demoníacas o maestros de la oscuridad. Disco bastante"
+                            + "heavy en cuanto a estilo");
+                }
+                break;
+            case "Black Clouds & Silver Linnings":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2009");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Álbum muy oscuro y heavy, salvo por una rock-balad, con tan sólo 6 canciones, bastante extensas cada una");
+                }
+                break;
+            case "A Dramatic Turn Of Events":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2011");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Primer disco sin el co-fundador del grupo Mike Portnoy. Tiene una estructura muy similar"
+                            + " a Images and Words.");
+                }
+                break;
+            case "Dream Theater":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2013");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Álbum con tono oscuro, canciones muy variadas en cuanto a estilo y duración, con una última canción"
+                            + "de las extensas.");
+                }
+                break;
+            case "The Astonishing":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2016");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Maravilloso álbum conceptual de estilo ópera-rock, muy extenso con 2 CDs, de tono mucho más melódico que el resto"
+                            + "de discos de la banda.");
+                }
+                break;
+            case "Distance Over Time":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2019");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Álbum algo más melódico, con canciones más cortas y concisas. Buen álbum de entrada al grupo");
+                }
+                break;
+            case "A View From The Top Of The World":
+                if (fechaLanzamientoSeleccionada) {
+                    pantallaDatos.actualizarInfoFechaLanzamiento("2021");
+                }
+                if (reviewSeleccionada) {
+                    pantallaDatos.actualizarInfoReview("Último disco de la banda hasta la fecha. Las pistas con algo más largas que el anterior disco");
+                }
+                break;
+            default:
+                break;
+        }
+
+        pantallaDatos.setVisible(true);
+    }
+
+    public void setJLabelCaratula() {
+
+        String selectedItem = (String) jComboBoxDiscos.getSelectedItem();
+        String imagePath = "";
+
+        switch (selectedItem) {
+            case "Images and Words":
+                imagePath = "src\\images\\images_and_words.jpg";
+                break;
+            case "Awake":
+                imagePath = "src\\images\\awake.jpg";
+                break;
+            case "Falling Into Infinity":
+                imagePath = "src\\images\\falling.jpg";
+                break;
+            case "Scenes From A Memory":
+                imagePath = "src\\images\\scenes.jpg";
+                break;
+            case "Six Degrees Of Inner Turbulence":
+                imagePath = "src\\images\\six_degrees.jpg";
+                break;
+            case "Train Of Thought":
+                imagePath = "src\\images\\train.jpg";
+                break;
+            case "Octavarium":
+                imagePath = "src\\images\\octavarium.jpg";
+                break;
+            case "Systematic Chaos":
+                imagePath = "src\\images\\systematic.jpg";
+                break;
+            case "Black Clouds & Silver Linnings":
+                imagePath = "src\\images\\black_clouds.jpg";
+                break;
+            case "A Dramatic Turn Of Events":
+                imagePath = "src\\images\\a_dramatic.jpg";
+                break;
+            case "Dream Theater":
+                imagePath = "src\\images\\dt.jpg";
+                break;
+            case "The Astonishing":
+                imagePath = "src\\images\\astonishing.jpg";
+                break;
+            case "Distance Over Time":
+                imagePath = "src\\images\\distance.jpg";
+                break;
+            case "A View From The Top Of The World":
+                imagePath = "src\\images\\a_view.jpg";
+                break;
+            default:
+                break;
+        }
+        setImageLabel(jLabelCaratula, imagePath);
     }
 
     private void setImageLabel(JLabel nombreLabel, String ruta) {
-        ImageIcon imagen = new ImageIcon(ruta);
-        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(nombreLabel.getWidth(), nombreLabel.getHeight(), Image.SCALE_DEFAULT));
-        nombreLabel.setIcon(icono);
+        if (ruta.isEmpty()) {
+            nombreLabel.setIcon(null);
+        } else {
+            ImageIcon imagen = new ImageIcon(ruta);
+            Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(nombreLabel.getWidth(), nombreLabel.getHeight(), Image.SCALE_DEFAULT));
+            nombreLabel.setIcon(icono);
+        }
     }
 
     /**
@@ -211,8 +506,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerMas;
     private javax.swing.JComboBox<String> jComboBoxDiscos;
     private javax.swing.JLabel jLabelCaratula;
-    private javax.swing.JLabel jLabelGuia;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabelGuia1;
+    private javax.swing.JLabel jLabelOpciones;
+    private javax.swing.JPanel jPanelBotones;
+    private javax.swing.JPanel jPanelContenido;
+    private javax.swing.JRadioButton jRadioButtonFechaLanzamiento;
+    private javax.swing.JRadioButton jRadioButtonIntegrantes;
+    private javax.swing.JRadioButton jRadioButtonReview;
     // End of variables declaration//GEN-END:variables
 }
