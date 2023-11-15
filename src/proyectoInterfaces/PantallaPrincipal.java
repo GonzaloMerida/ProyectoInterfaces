@@ -27,8 +27,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     public PantallaPrincipal() {
         initComponents();
+        //la ventana se abre en el centro de la pantalla
         setLocationRelativeTo(null);
 
+        /**
+         * Listeners que indican si se seleccionan los jradiobuttons
+         */
         jRadioButtonIntegrantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 integrantesSeleccionados = jRadioButtonIntegrantes.isSelected();
@@ -249,9 +253,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonNocheActionPerformed
 
+    /**
+     * Guarda la información de esta pantalla principal y la pasa a la de datos
+     * Los jRadioButtons seleccionados y el item del comboBox seleccionado
+     */
     public void abrirPantallaDatos() {
         PantallaDatos pantallaDatos = new PantallaDatos(this, true);
 
+        //si se selecciona el jRadioButton de integrantes
+        //desde el Images hasta el Black Clouds, mostrará unos integrantes
+        //para el resto, otros integrantes
         if (integrantesSeleccionados) {
             if (jComboBoxDiscos.getSelectedItem().equals("Images and Words")
                     || jComboBoxDiscos.getSelectedItem().equals("Awake")
@@ -270,6 +281,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         String selectedItem = (String) jComboBoxDiscos.getSelectedItem();
 
+        //depende del disco seleccionado y del jRadioButton marcado, se llevará
+        //para la pantalla datos, unos textos u otros.
         switch (selectedItem) {
             case "Images and Words":
                 if (fechaLanzamientoSeleccionada) {
@@ -399,6 +412,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         pantallaDatos.setVisible(true);
     }
 
+    /**
+     * Según el álbum del comboBox seleccionado, se muestra una carátula u otra
+     */
     public void setJLabelCaratula() {
 
         String selectedItem = (String) jComboBoxDiscos.getSelectedItem();
@@ -453,6 +469,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setImageLabel(jLabelCaratula, imagePath);
     }
 
+    /**
+     * Si no hay item seleccionado del comboBox, no se muestra ninguna imagen.
+     * Una vez seleccionado, cambiará en el jLabel de la imagen, un nuevo
+     * imageIcon con la ruta de la carátula que corresponda.
+     * @param nombreLabel
+     * @param ruta 
+     */
     private void setImageLabel(JLabel nombreLabel, String ruta) {
         if (ruta.isEmpty()) {
             nombreLabel.setIcon(null);

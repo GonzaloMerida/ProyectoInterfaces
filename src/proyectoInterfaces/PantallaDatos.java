@@ -27,13 +27,17 @@ public class PantallaDatos extends javax.swing.JDialog {
         super(parent, modal);
         pantallaPrincipal = (PantallaPrincipal) parent;
         initComponents();
+        //Para que la ventana se inicie en el centro
         setLocationRelativeTo(null);
         jLabelInfoIntegrantes.setBackground(Color.decode("#ADE1FF"));
         jLabelFecha.setBackground(Color.decode("#ADE1FF"));
         jLabelReview.setBackground(Color.decode("#ADE1FF"));
+        //Para que el fondo de los labels sean opacos y se sobrepongan al del
+        //jpanel
         jLabelInfoIntegrantes.setOpaque(true);
         jLabelFecha.setOpaque(true);
         jLabelReview.setOpaque(true);
+        //posición del texto del jLabelReview
         jLabelReview.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelReview.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
@@ -192,40 +196,61 @@ public class PantallaDatos extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Sale del programa por completo, cierra ambas ventanas
+     * @param evt 
+     */
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         this.dispose();
         pantallaPrincipal.dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
+    /**
+     * Vuelve a la pantalla principal, cerrando la de datos
+     * @param evt 
+     */
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
+    /**
+     * Cierra la pantalla de datos
+     * @param evt 
+     */
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
+    /**
+     * Cambia el texto del jLabel de los integrantes según el String
+     * que le llega por parámetro
+     * @param texto 
+     */
     public void actualizarInfoIntegrantes(String texto) {
         jLabelInfoIntegrantes.setText(texto);
     }
 
+    /**
+     * Cambia el texto con la fecha según el String que le llega por parámetro
+     * @param texto 
+     */
     public void actualizarInfoFechaLanzamiento(String texto) {
         jLabelFecha.setText(texto);
     }
 
+    /**
+     * Cambia el texto de la review según el disco seleccionado
+     * @param texto String del item seleccionado del jComboBox
+     */
     public void actualizarInfoReview(String texto) {
-        // Dividir el texto en líneas más cortas
-        String[] lineas = dividirTextoEnLineas(texto, 30); // Ajusta el número según sea necesario
-
-        // Unir las líneas con saltos de línea
-        String textoFormateado = String.join("\n", lineas);
-
-        // Establecer el texto en el JLabel
-        jLabelReview.setText(textoFormateado);
-        jLabelReview.setPreferredSize(new Dimension(jLabelReview.getWidth(), jLabelReview.getPreferredSize().height));
+        jLabelReview.setText(texto);
     }
 
 
+    /**
+     * Cambiar la venatana a modo oscuro, cambiando sus componentes.
+     * @param evt 
+     */
     private void jButtonNocheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNocheActionPerformed
         if (!modoOscuro) {
 
@@ -257,39 +282,42 @@ public class PantallaDatos extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButtonNocheActionPerformed
 
+    /**
+     * Método que intercambia los colores de los fondos de los 3 jLabel, cuando
+     * se pasa el ratón por encima y se sale de ellos, en función de si está el
+     * modo oscuro activado o no
+     * @param mouseEntered
+     * @param label 
+     */
     private void ajustarColores(boolean mouseEntered, JLabel label) {
         if (modoOscuro) {
             if (mouseEntered) {
-                label.setBackground(Color.decode("#ADE1FF")); // Azul más claro
+                 // Azul más claro para el fondo del label y más oscuro para las
+                 //letras si está el modo oscuro activado y entra el ratón
+                label.setBackground(Color.decode("#ADE1FF"));
                 label.setForeground(Color.decode("#005db2"));
             } else {
-                label.setBackground(Color.decode("#005db2")); // Azul más oscuro
+                //azul más oscuro para el fondo
+                label.setBackground(Color.decode("#005db2"));
+                //azul más claro para las letras
                 label.setForeground(Color.decode("#ADE1FF"));
             }
         } else {
+            //si no está el modo oscuro activado, azul oscuro para el fondo
+            //y azul claro para las letras
             if (mouseEntered) {
-                label.setBackground(Color.decode("#005db2")); // Azul más oscuro
+                label.setBackground(Color.decode("#005db2"));
             } else {
-                label.setBackground(Color.decode("#ADE1FF")); // Azul más claro
+                label.setBackground(Color.decode("#ADE1FF"));
             }
         }
     }
 
-    // Método para dividir el texto en líneas más cortas
-    private String[] dividirTextoEnLineas(String texto, int longitudLinea) {
-        int longitudTexto = texto.length();
-        int numLineas = (int) Math.ceil((double) longitudTexto / longitudLinea);
-        String[] lineas = new String[numLineas];
-
-        for (int i = 0; i < numLineas; i++) {
-            int inicio = i * longitudLinea;
-            int fin = Math.min((i + 1) * longitudLinea, longitudTexto);
-            lineas[i] = texto.substring(inicio, fin);
-        }
-
-        return lineas;
-    }
-
+    /**
+     * Métodos que llaman al método de ajustar los colores de los fondos y letras
+     * de los jLabel, al entrar y salir el ratón de ellos
+     * @param evt 
+     */
     private void jLabelInfoIntegrantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoIntegrantesMouseEntered
         ajustarColores(true, jLabelInfoIntegrantes);
     }//GEN-LAST:event_jLabelInfoIntegrantesMouseEntered
