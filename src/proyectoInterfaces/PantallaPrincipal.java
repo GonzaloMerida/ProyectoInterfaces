@@ -72,6 +72,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jRadioButtonFechaLanzamiento = new javax.swing.JRadioButton();
         jRadioButtonReview = new javax.swing.JRadioButton();
         jLabelGuia1 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jPanelBotones = new javax.swing.JPanel();
         jButtonVerMas = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
@@ -121,7 +122,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabelOpciones.setForeground(new java.awt.Color(56, 185, 255));
         jLabelOpciones.setText("Selecciona las opciones que quieras ver :");
         jPanelContenido.add(jLabelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 300, 30));
-        jPanelContenido.add(jLabelCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 370, 390));
+        jPanelContenido.add(jLabelCaratula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 370, 370));
 
         jComboBoxDiscos.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         jComboBoxDiscos.setForeground(new java.awt.Color(56, 185, 255));
@@ -157,6 +158,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabelGuia1.setForeground(new java.awt.Color(56, 185, 255));
         jLabelGuia1.setText("Selecciona álbum :");
         jPanelContenido.add(jLabelGuia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 190, 30));
+
+        jLabelTitulo.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(56, 185, 255));
+        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitulo.setText("BIBLIOTECA DREAM THEATER");
+        jPanelContenido.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 370, 30));
 
         jPanelBotones.setBackground(new java.awt.Color(255, 255, 255));
         jPanelBotones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
@@ -232,6 +239,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             jPanelContenido.setBackground(Color.decode("#17181a"));
             jPanelBotones.setBackground(Color.decode("#17181a"));
             jLabelGuia1.setForeground(Color.decode("#ade1ff"));
+            jLabelTitulo.setForeground(Color.decode("#ade1ff"));
             jLabelOpciones.setForeground(Color.decode("#ade1ff"));
             jRadioButtonFechaLanzamiento.setForeground(Color.decode("#ade1ff"));
             jRadioButtonIntegrantes.setForeground(Color.decode("#ade1ff"));
@@ -531,6 +539,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCaratula;
     private javax.swing.JLabel jLabelGuia1;
     private javax.swing.JLabel jLabelOpciones;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelBotones;
     private javax.swing.JPanel jPanelContenido;
     private javax.swing.JRadioButton jRadioButtonFechaLanzamiento;

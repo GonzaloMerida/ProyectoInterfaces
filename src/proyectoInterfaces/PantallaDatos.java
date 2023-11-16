@@ -274,11 +274,12 @@ public class PantallaDatos extends javax.swing.JDialog {
             modoOscuro = true;
 
         } else {
-            PantallaPrincipal frame = new PantallaPrincipal();
 
             this.dispose();
-            frame.setVisible(true);
+            PantallaDatos pantallaDatos = new PantallaDatos(pantallaPrincipal, true);
+            pantallaDatos.setVisible(true);
             modoOscuro = false;
+            
         }
     }//GEN-LAST:event_jButtonNocheActionPerformed
 
